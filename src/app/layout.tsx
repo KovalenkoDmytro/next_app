@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import TanstackProvider from './components/providers/TanstackProvider'
+import TanstackProvider from './Hooks/providers/TanstackProvider'
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
