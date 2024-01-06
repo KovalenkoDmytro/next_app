@@ -1,6 +1,6 @@
 import Todos from "@/components/Todos";
 import {getDictionary} from "@/lib/dictionaries"
-import { Locale } from "@/i18n.config";
+import { Locale } from "@/i18n";
 function getRandomInt(count:number){
     return Math.floor(Math.random() * count); 
 }
