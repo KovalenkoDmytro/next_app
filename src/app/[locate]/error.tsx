@@ -1,19 +1,21 @@
 'use client'
- 
-export default function Error({
-  error,
-  reset,
-}: {
+
+import { useTranslations } from "next-intl";
+
+export default function Error({ error, reset, }: {
   error: Error & { digest?: string }
   reset: () => void
 }) {
+
+  const dictionary = useTranslations('page');
+
   return (
     <html>
       <body>
         <div>
           <h2>{error.message}</h2>
-          <p>Something went wrong! Error page </p>
-          <button onClick={() => reset()}>Try again</button>
+          <p>{dictionary('error.title')} </p>
+          <button onClick={() => reset()}>{dictionary('error.buttons.tryAgain')}</button>
         </div>
       </body>
     </html>

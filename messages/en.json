@@ -2,9 +2,15 @@
   "Index": {
     "title": "Hello world! english"
   },
+  "About": {
+    "title": "About us"
+  },
   "navigation": {
     "home": "Home",
     "about": "About"
+  },
+  "Error":{
+    "title": "Eroor  ENGLISH"
   },
   "page": {
     "home": {
@@ -14,6 +20,15 @@
     "about": {
       "title": "About Us",
       "description": "This is the about page"
+    },
+    "error" : {
+      "title" : "Something went wrong! Error page English",
+      "buttons": {
+        "tryAgain" : "Try again"
+      }
+    },
+    "notFound" : {
+      "title" : "NotFound Page English"
     }
   }
 }

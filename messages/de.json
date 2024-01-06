@@ -14,6 +14,12 @@
     "about": {
       "title": "About Us",
       "description": "This is the about page"
+    },
+    "error" : {
+      "title" : "Error Page German"
+    },
+    "notFound" : {
+      "title" : "NotFound Page German"
     }
   }
 }
