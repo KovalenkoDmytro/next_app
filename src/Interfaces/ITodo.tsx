@@ -1,7 +1,7 @@
 export interface Todo {
-    userId: number,
     id: number,
-    title: string,
-    completed: boolean,
+    name: string,
+    image_url: string,
+    description: string,
     key: number,
 }
