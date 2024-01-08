@@ -7,7 +7,7 @@ function getRandomInt(count:number){
 export default  function Page(){
     // const numb = getRandomInt(2)
     // if(numb  === 1){
-        throw new Error ('Error loadind view ')
+    //     throw new Error ('Error loadind view ')
     // }
     
     return(
