@@ -1,28 +1,36 @@
 'use client'
 
-
-
 import {useAuth} from '@/Hooks/Auth'
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
+import {useState } from 'react'
 
+type User = {
+    email: string,
+    password: string,
+}
 
 const Login = () => {
-    const router = useRouter()
+    const [user, setUser] = useState<User>({
+        email: '',
+        password: '',
+    })
 
-    const { login } = useAuth()
-    console.log(login)
-
-
-    const [errors, setErrors] = useState([])
-    const [status, setStatus] = useState(null)
-
+    const { login } = useAuth({
+        middleware: 'guest',
+        redirectIfAuthenticated: '/',
+    })
+    // const { login } = Authentication()
 
     return (
         <>
-            Login page
+          Login page
+            <input type="email" onChange={(event)=>{setUser({...user, email : event.target.value})}} />
+            <input type="password" onChange={(event)=>{setUser({...user, password : event.target.value})}} />
+          
+            <button onClick={()=>{login(user)}}> Send </button>
         </>
     )
 }
 
 export default Login
+
+

@@ -6,7 +6,7 @@ export default function NotFound() {
   return (
     <html lang="en">
       <body>
-      Catching non-localized requests page
+        Error with url there Lang did not add 
         {/* <Error statusCode={404} /> */}
       </body>
     </html>

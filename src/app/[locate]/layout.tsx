@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import pick from 'lodash.pick';
 import TanstackProvider from '@/Hooks/providers/TanstackProvider'
 import {NextIntlClientProvider, useMessages} from "next-intl";
+import Context from '@/Hooks/providers/Context';
 
 
 export const metadata: Metadata = {
@@ -16,12 +17,14 @@ export default function RootLayout({children,params }: {children: React.ReactNod
     <html lang={params.locate}>
       <body>
         <TanstackProvider>
-        <NextIntlClientProvider
-          locale={params.locate}
-          messages={pick(messages, 'page')}
-        >
-          {children}
-        </NextIntlClientProvider>
+          <NextIntlClientProvider
+            locale={params.locate}
+            messages={pick(messages, 'page')}
+          >
+            <Context>
+              {children}
+            </Context>
+          </NextIntlClientProvider>
         </TanstackProvider>
       </body>
     </html>
