@@ -2,7 +2,7 @@
 import axios from 'axios'
 import { useQuery, keepPreviousData } from '@tanstack/react-query'
 import { useState } from 'react'
-import { Todo as ITodo } from '@/Interfaces/ITodo'
+import {  ITodo } from '@/Interfaces/ITodo'
 import Todo from '@/components/Todo'
 
 
@@ -18,6 +18,12 @@ export default function Todos() {
         },
     })
     
+// Simple GET request using fetch
+    fetch('http://127.0.0.1:8001/api/testAPI')
+        .then(response => response.json())
+        .then(data => console.log(data) );
+
+
     if (isPending) {
         return <span>Loading... in React query</span>
     }

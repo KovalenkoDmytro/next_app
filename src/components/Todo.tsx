@@ -1,7 +1,7 @@
-import {Todo} from '@/Interfaces/ITodo'
+import {ITodo} from '@/Interfaces/ITodo'
 import Image from 'next/image'
 
-export default function Todo({ id, name, image_url, description }: Todo) {
+export default function Todo({ id, name, image_url, description }: ITodo) {
   
     return (
         <div className="Todo">

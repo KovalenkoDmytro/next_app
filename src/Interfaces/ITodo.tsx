@@ -1,4 +1,4 @@
-export interface Todo {
+export interface ITodo {
     id: number,
     name: string,
     image_url: string,
