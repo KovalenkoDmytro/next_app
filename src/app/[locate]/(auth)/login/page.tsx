@@ -1,6 +1,6 @@
 'use client'
 
-import {useAuth} from '@/Hooks/Auth'
+import {useAuth} from '@/Helpers/Auth'
 import {useState } from 'react'
 
 type User = {

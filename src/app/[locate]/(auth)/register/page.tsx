@@ -1,7 +1,7 @@
 'use client'
 
 import {IUser} from '@/Interfaces/Auth/Register/IUser'
-import {Authentication} from '@/Hooks/Auth'
+import {Authentication} from '@/Helpers/Auth'
 import { useState } from "react"
 
 export default function Page(){

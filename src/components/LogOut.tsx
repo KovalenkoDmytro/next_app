@@ -1,5 +1,5 @@
 'use client'
-import { useAuth } from '@/Hooks/Auth';
+import { useAuth } from '@/Helpers/Auth';
 
 
 
@@ -7,7 +7,7 @@ export default function LogOut(){
    
     const { logout } = useAuth({
         middleware: 'guest',
-        redirectIfAuthenticated: '/',
+        redirectIfAuthenticated: '/en/login',
     })
 
     return(
