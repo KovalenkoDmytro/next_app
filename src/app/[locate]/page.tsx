@@ -1,14 +1,14 @@
 'use client'
 
 import {useTranslations} from 'next-intl';
-import LogOut from '@/components/LogOut';
+
 import { useContext  } from 'react'
 import {GlobalContext} from '@/Hooks/providers/Context'
+import Navigation from '@/components/Navigation'
 
 
-
-export default function Home() {
-
+export default function Home(props : {params :{locate: string}}) {
+  const language = props.params.locate
   const { user } = useContext<GlobalContext>(GlobalContext);
   console.log(user)
   // const t = useTranslations('Index');
@@ -19,7 +19,8 @@ export default function Home() {
     <main>
     {/* <h1>{t('title')}</h1> */}
     <h1>main</h1>
-    <LogOut/>
+    <Navigation locate={language}/>
+    
     {user.id !== 0 ? <><p>WELCOME</p> </>  : null}
     </main>
   )
