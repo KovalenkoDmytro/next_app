@@ -51,7 +51,11 @@ export const useAuth = ({ middleware, redirectIfAuthenticated }: { middleware: s
 
 
     }
-
+    const resendEmailVerification = () => {
+        axios
+            .post('/email/verification-notification')
+            .then(response => console.log(response.data.status))
+    }
     // const { data: user2, error, mutate } = useSWR('/api/user', () =>
     //     axios
     //         .get('/api/user')
@@ -104,11 +108,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated }: { middleware: s
     //         })
     // }
 
-    // const resendEmailVerification = () => {
-    //     axios
-    //         .post('/email/verification-notification')
-    //         .then(response => console.log(response.data.status))
-    // }
+
 
 
 
@@ -129,7 +129,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated }: { middleware: s
         login,
         // forgotPassword,
         // resetPassword,
-        // resendEmailVerification,
+        resendEmailVerification,
         logout,
     }
 }
