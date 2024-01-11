@@ -28,7 +28,7 @@ const Page = () => {
             )}
 
             <div className="mt-4 flex items-center justify-between">
-                <button onClick={() => resendEmailVerification({ setStatus })}>
+                <button onClick={() => resendEmailVerification()}>
                     Resend Verification Email
                 </button>
 

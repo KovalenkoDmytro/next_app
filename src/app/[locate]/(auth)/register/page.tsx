@@ -1,7 +1,7 @@
 'use client'
 
 import {IUser} from '@/Interfaces/Auth/Register/IUser'
-import {Authentication} from '@/Helpers/Auth'
+import {useAuth} from '@/Helpers/Auth'
 import { useState } from "react"
 
 export default function Page(){
@@ -12,10 +12,10 @@ export default function Page(){
         password: '',
         password_confirmation: '',
     })
-    // const { register } = useAuth({
-    //     middleware: 'guest',
-    //     redirectIfAuthenticated: '/',
-    // })
+    const { register } = useAuth({
+        middleware: 'guest',
+        redirectIfAuthenticated: '/',
+    })
 
     return(
         <article>
@@ -26,7 +26,7 @@ export default function Page(){
             <input type="password" onChange={(event)=>{setUser({...user, password : event.target.value})}} />
             <input type="password" onChange={(event)=>{setUser({...user, password_confirmation : event.target.value})}} />
 
-            {/* <button onClick={()=>{register(user)}}> Send </button> */}
+            <button onClick={()=>{register(user)}}> Send </button>
             
         </article>
     )

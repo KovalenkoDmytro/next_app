@@ -11,6 +11,26 @@ export const useAuth = ({ middleware, redirectIfAuthenticated }: { middleware: s
     const { user, setUser } = useContext<GlobalContext>(GlobalContext);
 
     const csrf = () => axios.get('/sanctum/csrf-cookie')
+    const register = async ({ ...props }) => {
+        await csrf()
+
+        axios
+            .post('/register', props)
+            .then(response => {
+                setUser(response.data.user)
+                toShowNotification({
+                    type: 'success',
+                    message: response.data.message,
+                })
+                router.push(redirectIfAuthenticated)
+            })
+            .catch(error => {
+                toShowNotification({
+                    type: 'error',
+                    message: error.response.data.message,
+                })
+            })
+    }
     const login = async ({ ...props }) => {
         await csrf()
         axios
@@ -69,17 +89,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated }: { middleware: s
 
 
 
-    // const register = async ({ ...props }) => {
-    //     await csrf()
 
-    //     axios
-    //         .post('/register', props)
-    //         .then(() => mutate())
-    //         .catch(error => {
-    //             if (error.response.status !== 422) throw error
-
-    //         })
-    // }
 
 
 
@@ -125,7 +135,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated }: { middleware: s
 
     return {
         user,
-        // register,
+        register,
         login,
         // forgotPassword,
         // resetPassword,
