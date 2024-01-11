@@ -2,6 +2,7 @@
 import axios from "@/lib/axios"
 import { useState } from "react"
 import { useQuery, keepPreviousData } from '@tanstack/react-query'
+import PreviewPage from "@/components/PreviewPage"
 
 export default function Page(){
 
@@ -10,7 +11,7 @@ export default function Page(){
         queryKey: ['estate-properies', { page }],
         placeholderData: keepPreviousData,
         queryFn: async () => {
-            const response = await axios.get(`/estate-properies`)
+            const response = await axios.get(`/estate-properties`)
             return response.data 
             // as Array<ITodo>
         },
@@ -19,6 +20,8 @@ export default function Page(){
     return(
         <article>
             estateProperies Page
+
+            <PreviewPage/>
         </article>    
     )
 } 
