@@ -3,7 +3,7 @@
 import { IEstateProperty } from "@/Interfaces/IEstateProperty"
 import axios from "@/lib/axios"
 import toShowNotification from "@/lib/notification"
-import { error } from "console"
+import PreviewPage from "@/components/PreviewPage"
 import { useState } from "react"
 
 
@@ -25,6 +25,7 @@ export default function Page(){
     return(
         <article>
             <h1>Create estatePropery unit</h1>
+            <PreviewPage/>
             <input type="text" onChange={(event)=>{setEstateProperty({...estateProperty, name : event.target.value})}} />
             <input type="text" onChange={(event)=>{setEstateProperty({...estateProperty, propertyDescription : event.target.value})}} />
             <input type="text" onChange={(event)=>{setEstateProperty({...estateProperty, address : event.target.value})}} />
