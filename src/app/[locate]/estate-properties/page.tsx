@@ -3,6 +3,7 @@ import axios from "@/lib/axios"
 import { useState } from "react"
 import { useQuery, keepPreviousData } from '@tanstack/react-query'
 import PreviewPage from "@/components/PreviewPage"
+import Link from "next/link"
 
 export default function Page(){
 
@@ -22,6 +23,7 @@ export default function Page(){
             estateProperies Page
 
             <PreviewPage/>
+            <Link href={'estate-properties/create'}>create estatePropery unit</Link>
         </article>    
     )
 } 
