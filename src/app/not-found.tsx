@@ -1,13 +1,12 @@
 'use client';
+import { PropsWithChildren, ReactNode } from 'react';
  
-import Error from 'next/error';
- 
-export default function NotFound() {
+export default function NotFound({ children }: PropsWithChildren) {
   return (
-    <html lang="en">
+    <html>
       <body>
         Error with url there Lang did not add 
-        {/* <Error statusCode={404} /> */}
+        {children}
       </body>
     </html>
   );
