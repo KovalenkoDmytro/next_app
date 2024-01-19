@@ -5,6 +5,9 @@ import { useQuery, keepPreviousData } from '@tanstack/react-query'
 import PreviewPage from "@/components/PreviewPage"
 import Link from "next/link"
 import { ITenant } from "@/Interfaces/ITenant"
+import Tenant from "@/components/Tenant"
+
+
 
 export default function Page() {
     const [page, setPage] = useState(1)
@@ -32,9 +35,9 @@ export default function Page() {
 
             <PreviewPage />
 
-            {/* {isSuccess ? data.map(({ ...item }: EstatePropertyProps, index: number) => {
-                return <EstateProperty {...item} key={index} />
-            }) : ''} */}
+            {isSuccess ? data.map(({ ...item }: ITenant, index: number) => {
+                return <Tenant {...item} key={index} />
+            }) : ''}
 
             <Link href={'tenants/create'}>create tenant</Link>
         </article>

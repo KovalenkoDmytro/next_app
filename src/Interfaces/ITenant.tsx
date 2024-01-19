@@ -1,6 +1,8 @@
 
 export interface ITenant {
+    id?:number,
     firstName: string,
-    secondName : string,
+    lastName : string,
     phone: string,
+    email: string,
 }
