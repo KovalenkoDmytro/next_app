@@ -1,9 +1,14 @@
+
 'use client'
+import React, { lazy } from "react";
 import axios from "@/lib/axios"
 import { useQuery } from '@tanstack/react-query'
 import { IEstateProperty } from '@/Interfaces/IEstateProperty'
 import PreviewPage from "@/components/PreviewPage"
 import { useEffect, useState } from "react"
+import Tabs from "@/components/Tabs/Tabs"
+import TabContentItem from "@/components/Tabs/TabContentItem"
+import Loading from "@/components/Loading";
 
 
 export default function Page({ params }: { params: { id: number } }) {
@@ -45,6 +50,36 @@ export default function Page({ params }: { params: { id: number } }) {
     return (
         <article>
             <PreviewPage />
+
+                <Tabs tabsItems={[("API"), ("Rooms"), ("Extras"), ("Facilities"), ("Media")]}>
+                    <TabContentItem tabName="API">
+                        <React.Suspense fallback={<Loading />}>
+                                API content
+                        </React.Suspense>
+                       
+                    </TabContentItem>
+                    <TabContentItem tabName="Rooms">
+                        <React.Suspense fallback={<Loading />}>
+                            Rooms content
+                        </React.Suspense>
+                    </TabContentItem>
+                    <TabContentItem tabName="Extras">
+                        <React.Suspense fallback={<Loading />}>
+                            Extras content
+                        </React.Suspense>
+                    </TabContentItem>
+                    <TabContentItem tabName="Facilities">
+                        <React.Suspense fallback={<Loading />}>
+                            Facilities content
+                        </React.Suspense>
+                    </TabContentItem>
+                    <TabContentItem tabName="Media">
+                        <React.Suspense fallback={<Loading />}>
+                            Media content
+                        </React.Suspense>
+                    </TabContentItem>
+                </Tabs>
+
                 <div>
                     Real Este
                     id - {estateProperty.id}
