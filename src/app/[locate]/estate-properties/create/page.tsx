@@ -6,6 +6,7 @@ import toShowNotification from "@/lib/notification"
 import PreviewPage from "@/components/PreviewPage"
 import { useState } from "react"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
+import CheckAuthentication from "@/components/CheckAuthentication"
 
 
 export default function Page() {
@@ -39,7 +40,7 @@ export default function Page() {
 
 
     return (
-        <article>
+        <CheckAuthentication pageTitle='Create estate property'>
             <h1>Create estatePropery unit</h1>
             <PreviewPage />
             <input type="text" onChange={(event) => { setEstateProperty({ ...estateProperty, name: event.target.value }) }} />
@@ -49,6 +50,6 @@ export default function Page() {
 
 
             <button onClick={() => { mutate(estateProperty) }}> Send </button>
-        </article>
+        </CheckAuthentication>
     )
 }

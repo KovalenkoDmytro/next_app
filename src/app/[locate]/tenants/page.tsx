@@ -6,6 +6,7 @@ import PreviewPage from "@/components/PreviewPage"
 import Link from "next/link"
 import { ITenant } from "@/Interfaces/ITenant"
 import Tenant from "@/components/Tenant"
+import CheckAuthentication from "@/components/CheckAuthentication"
 
 
 
@@ -30,7 +31,7 @@ export default function Page() {
 
 
     return(
-        <article>
+        <CheckAuthentication pageTitle='Tenant'>
             tenants Page
 
             <PreviewPage />
@@ -40,6 +41,6 @@ export default function Page() {
             }) : ''}
 
             <Link href={'tenants/create'}>create tenant</Link>
-        </article>
+        </CheckAuthentication>
     )
 }

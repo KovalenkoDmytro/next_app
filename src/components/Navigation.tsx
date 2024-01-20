@@ -10,7 +10,7 @@ export default function Navigation() {
     const { locate } = useParams()
   
     return (
-        <div className='navigation container'>
+        <section className='navigation container'>
             <Logo/>
             <nav className='navigation__links'>
                 <Link
@@ -26,6 +26,6 @@ export default function Navigation() {
                 userInfo
                 <LogOut />
             </div>
-        </div>
+        </section>
     )
 }

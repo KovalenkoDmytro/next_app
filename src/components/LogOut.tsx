@@ -1,13 +1,14 @@
 'use client'
 import { useAuth } from '@/Helpers/Auth';
+import { useParams } from 'next/navigation';
 
 
 
-export default function LogOut(props? : {params? :{locate: string}}){
-    const language = props?.params?.locate
+export default function LogOut(){
+    const {locate} = useParams()
     const { logout } = useAuth({
         middleware: 'guest',
-        redirectIfAuthenticated: `/${language}/login`,
+        redirectIfAuthenticated: `/${locate}/login`,
     })
 
     return(

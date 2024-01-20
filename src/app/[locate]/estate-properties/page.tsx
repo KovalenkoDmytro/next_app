@@ -6,6 +6,7 @@ import PreviewPage from "@/components/PreviewPage"
 import Link from "next/link"
 import { IEstateProperty } from "@/Interfaces/IEstateProperty"
 import EstateProperty from "@/components/EstatePropertyItem"
+import CheckAuthentication from "@/components/CheckAuthentication"
 
 
 type EstatePropertyProps = {
@@ -37,7 +38,7 @@ export default function Page() {
     }
 
     return (
-        <article>
+        <CheckAuthentication pageTitle='Estate properies'>
             estateProperies Page
 
             <PreviewPage />
@@ -47,6 +48,6 @@ export default function Page() {
             }) : ''}
 
             <Link href={'estate-properties/create'}>create estatePropery unit</Link>
-        </article>
+        </CheckAuthentication>
     )
 } 

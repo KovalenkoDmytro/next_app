@@ -24,9 +24,9 @@ export default function RootLayout({children,params }: {children: React.ReactNod
           >
             <Context>
               <Navigation/>
-              <main className='container'>
-                {children}
-              </main>
+              
+              {children}
+      
             </Context>
           </NextIntlClientProvider>
         </TanstackProvider>
