@@ -39,7 +39,7 @@ export default function EstateProperty ({ id, name, address, }: EstatePropertyPr
             <p>id : {id}</p>
             <h2>name : {name}</h2>
             <p>address : {address}</p>
-            <Link href={`estate-properties/${id}`}>Edit</Link>
+            <Link href={`estate-properties/${id}/edit`}>Edit</Link>
             <button onClick={()=>{mutate()}}>Destroy</button>
         </section>
     )

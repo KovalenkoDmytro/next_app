@@ -16,12 +16,20 @@ export default function Home(props : {params :{locate: string}}) {
 
 
   return (
-    <main>
-    {/* <h1>{t('title')}</h1> */}
-    <h1>main</h1>
-    <Navigation locate={language}/>
+    <>
+     
+ 
+      {/* <h1>{t('title')}</h1> */}
+      <header className='header'>
+                page name
+              </header>
+      <h1>main</h1>
+     
+      
+      {user.id !== 0 ? <><p>WELCOME</p> </>  : null}
+
     
-    {user.id !== 0 ? <><p>WELCOME</p> </>  : null}
-    </main>
+    </>
+    
   )
 }

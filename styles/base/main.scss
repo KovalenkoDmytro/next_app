@@ -1,0 +1,38 @@
+html {
+    background-color: $background_color;
+    &.overlay{
+        overflow: hidden;
+        body:before{
+            content: '';
+            position: fixed;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2;
+            background-color: $overlay_background_color;
+        }
+    }
+}
+
+.container {
+    margin: 0 auto;
+    display: flex;
+    padding: 0 15px;
+    width: 100%;
+    @include tablet {
+        max-width: 700px;
+    }
+    @include laptop {
+        max-width: 900px;
+        padding: 0;
+    }
+    @include desktop {
+        max-width: 1440px;
+    }
+}
+
+.logo{
+    max-height: 50px;
+}

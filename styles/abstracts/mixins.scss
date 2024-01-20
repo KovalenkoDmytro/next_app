@@ -1,0 +1,26 @@
+@mixin tablet {
+    @media (min-width: 757px) {
+        @content
+    }
+}
+
+@mixin laptop {
+    @media (min-width: 979px) {
+        @content
+    }
+}
+
+@mixin desktop {
+    @media (min-width: 1440px) {
+        @content
+    }
+}
+
+@mixin transition{
+    transition: all .5s;
+}
+
+@mixin scrollbar{
+    scrollbar-color: $gray_color transparent;
+    scrollbar-width: thin;
+}

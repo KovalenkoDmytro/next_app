@@ -10,9 +10,8 @@ import { useParams } from 'next/navigation'
 export default function Page() {
 
     const { id } = useParams<{ id: string }>()
-    const client = useQueryClient()
     const queryClient = useQueryClient()
-    const { isSuccess, isPending, data, error, isPlaceholderData } = useQuery({
+    const { isSuccess, isPending, isError, data, error, isPlaceholderData } = useQuery({
         queryKey: ['tenant', { id }],
         queryFn: async () => {
             const response = await axios.get(`/api/tenants/${id}/edit`)
@@ -31,7 +30,7 @@ export default function Page() {
     const { mutate } = useMutation({
         mutationFn: toUptade,
         onSuccess: (data) => {
-            client.invalidateQueries({ queryKey: ['tenants'] })
+            queryClient.invalidateQueries({ queryKey: ['tenants'] })
             toShowNotification(data)
         },
         onError(error, variables, context) {
@@ -42,16 +41,28 @@ export default function Page() {
         },
     })
 
+    if (isPending) {
+        return <span>Loading... in React query</span>
+    }
+
+    if (isError) {
+        return <div>Error: {error.message}</div>
+    }
 
     return (
         <article>
             <h1>Create tenant</h1>
             <PreviewPage />
-            <input type="text" value={data?.firstName} onChange={(event) => { toUpdateQueryData({ firstName: event.target.value }) }} />
-            <input type="text" value={data?.lastName} onChange={(event) => {toUpdateQueryData({ lastName: event.target.value }) }} />
-            <input type="tel" value={data?.phone} onChange={(event) => {toUpdateQueryData({ phone: event.target.value }) }} />
-            <input type="email" value={data?.email}   onChange={(event) => {toUpdateQueryData({ email: event.target.value }) }} />
-            <button onClick={() => { mutate() }}> Update </button>
+            {isSuccess &&
+                <>
+                 <input type="text" value={data.firstName} onChange={(event) => { toUpdateQueryData({ firstName: event.target.value }) }} />
+                    <input type="text" value={data.lastName} onChange={(event) => {toUpdateQueryData({ lastName: event.target.value }) }} />
+                    <input type="tel" value={data.phone} onChange={(event) => {toUpdateQueryData({ phone: event.target.value }) }} />
+                    <input type="email" value={data.email}   onChange={(event) => {toUpdateQueryData({ email: event.target.value }) }} />
+                    <button onClick={() => { mutate() }}> Update </button>
+                </> 
+            }
+           
         </article>
     )
 }

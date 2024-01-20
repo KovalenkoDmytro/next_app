@@ -3,7 +3,8 @@ import pick from 'lodash.pick';
 import TanstackProvider from '@/Hooks/providers/TanstackProvider'
 import {NextIntlClientProvider, useMessages} from "next-intl";
 import Context from '@/Hooks/providers/Context';
-
+import '../../../styles/app.scss'
+import Navigation from '@/components/Navigation';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -22,7 +23,10 @@ export default function RootLayout({children,params }: {children: React.ReactNod
             messages={pick(messages, 'page')}
           >
             <Context>
-              {children}
+              <Navigation/>
+              <main className='container'>
+                {children}
+              </main>
             </Context>
           </NextIntlClientProvider>
         </TanstackProvider>
