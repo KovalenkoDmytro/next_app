@@ -37,7 +37,7 @@ export default function Tenant ( props : ITenant){
             <p>lastName : {props.lastName}</p>
             <p>phone : {props.phone}</p>
             <p>email : {props.email}</p>
-            <Link href={`tenants/${props.id}`}>Edit</Link>
+            <Link href={`tenants/${props.id}/edit`}>Edit</Link>
             <button onClick={()=>{mutate()}}>Destroy</button>
         </section>
     )
