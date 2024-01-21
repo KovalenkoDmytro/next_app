@@ -55,7 +55,6 @@ export default function Page() {
     
     return (
         <CheckAuthentication pageTitle='Create estate property'>
-            <h1>Create estatePropery unit</h1>
             <PreviewPage />
             <Tabs tabsItems={[("General information"), ("Units"), ("Media")]}>
                 <TabContentItem tabName="General information">
@@ -99,7 +98,7 @@ export default function Page() {
 
             </Tabs>
 
-            <button onClick={() => { mutate(estateProperty) }}> Send </button>
+            <button className="btn _solid" onClick={() => { mutate(estateProperty) }}> Create </button>
         </CheckAuthentication>
     )
 }

@@ -4,18 +4,28 @@
     flex-direction: column;
     margin-top: 15px;
     position: relative;
+    
     &.validate_error {
-        .input_title {
+        .error {
             color: $danger_color;
+            margin-left: 5px;
+            font-style: italic;
         }
 
         input, textarea, select {
             border-color: $danger_color;
         }
 
-        label:after {
-            color: $danger_color;
-        }
 
+    }
+
+    .input_group__header{
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+    
+        label{
+            text-transform: capitalize;
+        }
     }
 }

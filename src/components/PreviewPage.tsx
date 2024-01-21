@@ -10,6 +10,6 @@ export default function PreviewPage( {...props}:{url? : string|undefined}){
     }
 
     return (
-        <button onClick={toPreviewPage}>Back to preview page</button>
+        <button className="btn _solid" onClick={toPreviewPage}>Back to preview page</button>
     )
 }

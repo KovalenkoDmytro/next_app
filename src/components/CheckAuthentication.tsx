@@ -3,7 +3,7 @@ import { Fragment, useContext } from 'react'
 import { GlobalContext } from '@/Hooks/providers/Context'
 import { useParams, useRouter } from "next/navigation"
 
-export default function CheckAuthentication({ children, pageTitle }: { children: React.ReactNode, pageTitle: string }) {
+export default function CheckAuthentication({ children, pageTitle }: { children: React.ReactNode, pageTitle?: string }) {
 
     const { user } = useContext<GlobalContext>(GlobalContext);
     const { locate } = useParams<{ locate: string }>()
@@ -15,7 +15,10 @@ export default function CheckAuthentication({ children, pageTitle }: { children:
 
     return (
         <Fragment>
-            <header className='header container'>{pageTitle}</header>
+            {pageTitle && <header className='header container'>
+                <h1>{pageTitle}</h1>
+            </header>}
+
             <main className='container'>
                 {children}
             </main>
