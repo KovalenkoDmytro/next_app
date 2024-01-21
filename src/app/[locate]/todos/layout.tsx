@@ -1,4 +1,4 @@
-import Todos from "@/components/Todos"
+import Todos from "@/components/PropertyUnits/PropertyUnits"
 
 export default function TodoesLayout({children}: {children: React.ReactNode}) {
     return (

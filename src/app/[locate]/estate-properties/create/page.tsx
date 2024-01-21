@@ -4,7 +4,7 @@ import { IEstateProperty } from "@/Interfaces/IEstateProperty"
 import axios from "@/lib/axios"
 import toShowNotification from "@/lib/notification"
 import PreviewPage from "@/components/PreviewPage"
-import { useState } from "react"
+import { lazy, useState } from "react"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import CheckAuthentication from "@/components/CheckAuthentication"
 import Tabs from "@/components/Tabs/Tabs"
@@ -53,6 +53,8 @@ export default function Page() {
         },
     })
     
+    const CreatePropertyUnits = lazy(()=>import('@/components/PropertyUnits/CreatePropertyUnits'))
+
     return (
         <CheckAuthentication pageTitle='Create estate property'>
             <PreviewPage />
@@ -87,7 +89,11 @@ export default function Page() {
                 </TabContentItem>
                 <TabContentItem tabName="Units">
                     <React.Suspense fallback={<Loading />}>
+
+                        
+
                         Units
+                        <CreatePropertyUnits/>
                     </React.Suspense>
                 </TabContentItem>
                 <TabContentItem tabName="Media">

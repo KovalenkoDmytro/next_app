@@ -4,6 +4,7 @@ type InputProps = {
     name: string,
     error: string,
     label: string,
+    type?: string
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -17,7 +18,7 @@ export default function Input( {...props } : InputProps ) {
                 {props.error && <span className="error">{props.error}</span>}
              </div>
             }
-            <input id={`${props.name}_${id}`} type='text' onChange={props.onChange}/>
+            <input id={`${props.name}_${id}`} type={props.type ?? 'text'} onChange={props.onChange}/>
             
         </div>
     );

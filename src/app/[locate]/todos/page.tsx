@@ -1,4 +1,4 @@
-import Todos from "@/components/Todos";
+import Todos from "@/components/PropertyUnits/PropertyUnits";
 import { useTranslations } from "next-intl";
 function getRandomInt(count:number){
     return Math.floor(Math.random() * count); 
