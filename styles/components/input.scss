@@ -1,0 +1,21 @@
+
+.input_group{
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    position: relative;
+    &.validate_error {
+        .input_title {
+            color: $danger_color;
+        }
+
+        input, textarea, select {
+            border-color: $danger_color;
+        }
+
+        label:after {
+            color: $danger_color;
+        }
+
+    }
+}

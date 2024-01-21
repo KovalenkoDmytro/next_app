@@ -1,0 +1,60 @@
+.tabs {
+    margin: 20px 0;
+
+    .tabs_titles {
+        display: flex;
+        background-color: $primary_color;
+        overflow-x: auto;
+        @include scrollbar();
+
+        .title {
+            padding: 15px;
+            font-weight: 600;
+            color: $white_color;
+            cursor: pointer;
+            @include transition;
+
+            &.active {
+                cursor: not-allowed;
+            }
+
+            &:hover,
+            &.active {
+                background-color: $secondary_color;
+            }
+        }
+    }
+
+    .tabs_content {
+        border: 1px solid $border_color;
+        border-top: initial;
+        background-color: $white_color;
+
+        .content {
+            padding: 10px;
+            display: none;
+            min-height: 200px;
+            
+            @include tablet {
+                padding: 15px;
+            }
+
+            @include desktop {
+                padding: 25px;
+            }
+
+            &.active {
+                display: block;
+            }
+
+            .map {
+                margin-top: 0;
+                margin-bottom: 15px;
+
+                @include desktop {
+                    margin-bottom: 25px;
+                }
+            }
+        }
+    }
+}
