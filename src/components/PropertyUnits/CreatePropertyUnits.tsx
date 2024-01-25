@@ -1,53 +1,55 @@
 
-import React, { useState } from "react"
-import Input from "@/components/Input"
-import { IPropertyUnits } from "@/Interfaces/IPropertyUnits"
+import React, {  useState }  from "react"
+import Input from "@/components/Input";
+import toShowNotification from "@/lib/notification";
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { IPropertyUnit } from "@/Interfaces/IPropertyUnit";
+import axios from "@/lib/axios";
 
+export default function CreatePropertyUnits (){
 
-export default React.memo(function CreatePropertyUnits (){
-    const [unit, setUnit] = useState<IPropertyUnits>({
-        sqFt: '',
-        description: '',
-        securityDeposit: '',
-        typeOfunit: ''
+    const [unit, setUnit] = useState({
+        name : ''
     })
 
-    const typeOfunits =[ 
-        '1 Bedroom Basement','1 Bedroom Basement Premium',
-        '2 Bedroom Basement' ,'Studio', 
-        '1 bedroom', '1 bedroom + den',
-        '1 Bedroom Premium','2 bedroom', 
-        '2 bedroom + den', '2 Bedroom Premium','3 bedroom'
-    ]
+    const client = useQueryClient()
+    const toCreate = async (data: IPropertyUnit) => {
+        const resp = await axios.post('/api/property-units', data)
+        return resp.data
+    };
+    const { mutate } = useMutation({
+        mutationFn: toCreate,
+        onSuccess: (data) => {
+            client.invalidateQueries({ queryKey: ['property-units'] })
+            toShowNotification(data)
+        },
+        onError(error) {
+            toShowNotification(
+                {
+                    type: 'error',
+                    message: error['response'].data.errors
+                }
+            )
+        },
+    })
 
-    return(
-        <div >
-            <p>CreatePropertyUnits</p>
-            <Input
-                label="Sq Ft"  
-                name="SqFt"
-                type='number'
-                error={''}
-                onChange={(event) => {setUnit({...unit, sqFt:event.target.value})}}
-            />
-            <Input
-                label="Security Deposit"  
-                name="SecurityDeposit"
-                error={''}
-                onChange={(event) => {setUnit({...unit, securityDeposit:event.target.value})}}
-            />
-            <select
-                 onChange={(event) => {setUnit({...unit, typeOfunit:event.target.value})}}
-            >
-                {typeOfunits.map((item, index)=>{
-                    return <option key={index}>{item}</option>
-                })}
-            </select>
-            <textarea 
-                onChange={(event) => {setUnit({...unit, description:event.target.value})}}
-            ></textarea>
-        </div>
+  return(
 
        
-    )
-})
+                <>
+                    <Input
+                        label="name"
+                        name="name"
+                        type='name'
+                        error={''}
+                        onChange={(event) => { setUnit({...unit, name: event.target.value}) }}
+                    />
+                    <button className="btn" onClick={()=>{mutate(unit)}}>Create</button>
+                </>
+
+
+  )
+   
+
+    
+}

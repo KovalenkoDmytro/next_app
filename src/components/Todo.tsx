@@ -1,4 +1,4 @@
-import {ITodo} from '@/Interfaces/IPropertyUnits'
+import {ITodo} from '@/Interfaces/IPropertyUnit'
 import Image from 'next/image'
 
 export default function Todo({ id, name, image_url, description }: ITodo) {

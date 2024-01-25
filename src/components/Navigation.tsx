@@ -21,6 +21,10 @@ export default function Navigation() {
                     className={`navigation__link ${pathname.includes('tenants') ? '_active' : ''}`}
                     href={`/${locate}/tenants`}>tenants
                 </Link>
+                <Link
+                    className={`navigation__link ${pathname.includes('property-units') ? '_active' : ''}`}
+                    href={`/${locate}/property-units`}>property units
+                </Link>
             </nav>
             <div>
                 userInfo
