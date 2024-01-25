@@ -5,4 +5,5 @@ export interface IEstateProperty {
     propertyDescription : string,
     address : string,
     locationDescription : string
+    media? : [] 
 }

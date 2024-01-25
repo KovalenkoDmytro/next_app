@@ -19,6 +19,7 @@ export default function Page() {
         propertyDescription: '',
         address: '',
         locationDescription: '',
+        media: [] ,
     })
 
     const [errors, setErrors] = useState<IEstateProperty>({
@@ -53,7 +54,7 @@ export default function Page() {
         },
     })
     
-    const CreatePropertyUnits = lazy(()=>import('@/components/PropertyUnits/CreatePropertyUnits'))
+    const Media = lazy(()=>import('@/components/MedialLoad'))
 
     return (
         <CheckAuthentication pageTitle='Create estate property'>
@@ -93,12 +94,11 @@ export default function Page() {
                         
 
                         Units
-                        <CreatePropertyUnits/>
                     </React.Suspense>
                 </TabContentItem>
                 <TabContentItem tabName="Media">
                     <React.Suspense fallback={<Loading />}>
-                        Media
+                        <Media globalState={estateProperty} setGlobalState={setEstateProperty}/>
                     </React.Suspense>
                 </TabContentItem>
 
